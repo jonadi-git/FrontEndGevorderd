@@ -1,6 +1,33 @@
-<h2>Reactor ID: {{reactorId}}</h2>
-<p>Temperatuur: {{reactorTemperatuur}}</p>
-<p>Reactor status: {{reactorStatus}}</p>
-<p>Powergrid ID: {{reactorPowerGridId}}</p>
-<button (click)="('')">Start</button>
-<button (click)="('')">Stop</button>
+
+
+    <div class="temperature-controls">
+    
+       
+            <h2>Reactor ID: {{reactorId}}</h2>
+            <p> @if (meltDown) {
+                    <span></span>
+                }@else {
+                    <span></span>
+
+                }
+                Temperatuur: {{reactorTemperatuur}}
+
+            </p>
+            <p>Reactor status: {{reactorStatus}}</p>
+       
+
+            <p>Powergrid ID: {{reactorPowerGridId}}</p>
+            <h2>Control</h2>
+            <button (click)="changeLocale('r')">Start</button>
+            <button (click)="changeLocale('s')">Stop</button>
+         
+    </div>
+
+
+     <div class="temperature-controls">
+        <p>Temperatuur Unit: {{locale}}  </p>
+        <button (click)="changeLocale('°C')">Celsius</button>
+        <button (click)="changeLocale('°F')">Fahrenheit</button>
+        <button (click)="changeLocale('°K')">Kelvin</button>
+    </div>
+

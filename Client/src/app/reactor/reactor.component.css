@@ -1,0 +1,19 @@
+/* .temperature-controls {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px; 
+  } */
+  
+.temperature-controls {
+    flex: 3; 
+    min-width: 200px; 
+    margin: 0 10px; 
+  }
+  
+  button {
+    margin-top: 5px; 
+  }
+  
+  
+
+  

@@ -13,9 +13,30 @@ import { FormsModule } from '@angular/forms';
 export class AppComponent {
   reactors: Array<string> = [];
   newReactor: string = "Reactor toevoegen...";
+  locale: string = "°C"
+
+  reactorTemperatuur: number | string | undefined;
+  reactorMelding: string | undefined;
 
   addNewReactor(){
     this.reactors.push(this.newReactor);
     this.newReactor = "";
   }
+
+ /*  constructor () {
+
+    window.setInterval(() => {
+      const huidigTemperatuur = (Math.floor((Math.random() * 1000) + 1));
+      this.reactorTemperatuur = huidigTemperatuur.valueOf() + this.locale;
+    },1000);
+
+    window.setInterval(() => {
+    const gekozenTemp = new String ();
+      this.reactorMelding = gekozenTemp.toLocaleString();
+    });
+
+  }
+  changeLocale(locale: string) {
+    this.locale = locale;
+  } */
 }

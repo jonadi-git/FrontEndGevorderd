@@ -11,20 +11,47 @@ import { last } from 'rxjs';
 export class ReactorComponent {
   @Input()
   reactorType: string = "Reactor: 0";
-
+  
+  static startTemperatuur = 0;
   static lastId = 0;
   reactorId: number | undefined;
-  reactorTemperatuur: number | undefined;
-  reactorStatus: 'Stopped' | 'Cooldown' | 'Running' | 'Meltdown' |undefined;
+  reactorTemperatuur: number | string | undefined;
+  reactorStatus: string |undefined;
   reactorPowerGridId: number | undefined;
 
+  reactorMelding: string | undefined;
+
+  meltDown: boolean = false;
+
+  locale: string = "°C"
+  localeR: string = "Running"
 
   constructor () {
     this.reactorId = ReactorComponent.lastId++;
     this.reactorPowerGridId = ReactorComponent.lastId++;
+    this.reactorTemperatuur = ReactorComponent.startTemperatuur;
 
+
+
+    window.setInterval(() => {
+      const huidigTemperatuur = (Math.floor((Math.random() * 1000) + 1));
+      this.reactorTemperatuur = huidigTemperatuur.valueOf() + this.locale;
+    },1000);
+
+    window.setInterval(() => {
+    const gekozenTemp = new String ();
+      this.reactorMelding = gekozenTemp.toLocaleString();
+    });
+
+    /* window.setInterval(() => {
+      const statusReactor = new String ();
+        this.reactorStatus = statusReactor.toLocaleString() + this.localeR;
+      }); */
+
+  }
+  changeLocale(locale: string) {
+    this.locale = locale;
   
-
   }
 
 
