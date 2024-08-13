@@ -4,22 +4,35 @@
     
        
             <h2>Reactor ID: {{reactorId}}</h2>
-            <p> @if (meltDown) {
-                    <span></span>
-                }@else {
-                    <span></span>
-
-                }
+            <p> 
                 Temperatuur: {{reactorTemperatuur}}
 
             </p>
-            <p>Reactor status: {{reactorStatus}}</p>
+            <p>
+                Reactor status: {{reactorStatus}}
+
+                @if (meltDown) {
+                    <!-- <p>: meltDown</p> -->
+                    
+                    <span>&#9789;</span>
+                }@else {
+                    
+                   <!--  <p>: Cooldown</p> -->
+                    <span>&#9788;</span>
+
+                }
+
+            </p>
        
 
             <p>Powergrid ID: {{reactorPowerGridId}}</p>
             <h2>Control</h2>
-            <button (click)="changeLocale('r')">Start</button>
-            <button (click)="changeLocale('s')">Stop</button>
+            <button (click)="ngOnInit()">Start</button>
+            <button (click)="ngOnDestroy()">Stop</button>
+
+            <h2>Test scenario's</h2>
+            <button (click)="ngOnInit()">Cooldown</button>
+            <button (click)="ngOnDestroy()">meltdown</button>
          
     </div>
 

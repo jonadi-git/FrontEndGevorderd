@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { last } from 'rxjs';
 
 @Component({
@@ -8,7 +8,7 @@ import { last } from 'rxjs';
   templateUrl: './reactor.component.html',
   styleUrl: './reactor.component.css'
 })
-export class ReactorComponent {
+export class ReactorComponent implements OnInit, OnDestroy {
   @Input()
   reactorType: string = "Reactor: 0";
   
@@ -26,14 +26,16 @@ export class ReactorComponent {
   locale: string = "°C"
   localeR: string = "Running"
 
-  constructor () {
+  intervalId: number | undefined;
+  
+  /* constructor () {
     this.reactorId = ReactorComponent.lastId++;
     this.reactorPowerGridId = ReactorComponent.lastId++;
     this.reactorTemperatuur = ReactorComponent.startTemperatuur;
 
 
 
-    window.setInterval(() => {
+    this.intervalId = window.setInterval(() => {
       const huidigTemperatuur = (Math.floor((Math.random() * 1000) + 1));
       this.reactorTemperatuur = huidigTemperatuur.valueOf() + this.locale;
     },1000);
@@ -43,12 +45,54 @@ export class ReactorComponent {
       this.reactorMelding = gekozenTemp.toLocaleString();
     });
 
-    /* window.setInterval(() => {
+     window.setInterval(() => {
       const statusReactor = new String ();
         this.reactorStatus = statusReactor.toLocaleString() + this.localeR;
-      }); */
+      }); 
 
+  } */
+
+  
+  ngOnInit(): void {
+    this.reactorId = ReactorComponent.lastId++;
+    this.reactorPowerGridId = ReactorComponent.lastId++;
+    this.reactorTemperatuur = ReactorComponent.startTemperatuur;
+
+
+
+    this.intervalId = window.setInterval(() => {
+      const huidigTemperatuur = (Math.floor((Math.random() * 1000) + 1));
+      this.reactorTemperatuur = huidigTemperatuur.valueOf() + this.locale;
+      
+    this.meltDown = huidigTemperatuur >= 830 || huidigTemperatuur <= 150;
+
+    },1000);
+    this.reactorStatus = 'Running';
+
+    window.setInterval(() => {
+    const gekozenTemp = new String ();
+      this.reactorMelding = gekozenTemp.toLocaleString();
+    });
+    
+
+
+
+
+   /*  if (this.intervalId > 830) {
+      this.reactorStatus = 'Meltdown';
+      this.ngOnDestroy();
+    } else if (this.intervalId < 150) {
+      this.reactorStatus = 'Cooldown';
+    } */
   }
+
+    ngOnDestroy(): void {
+    clearInterval(this.intervalId);
+    this.reactorStatus = 'Stopped'
+  
+  }
+
+
   changeLocale(locale: string) {
     this.locale = locale;
   

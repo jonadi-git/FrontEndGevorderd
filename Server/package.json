@@ -1,18 +1,20 @@
 {
   "name": "server",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm ci & cross-env PORT=2024 nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
     "cross-env": "^7.0.3",
-    "crossenv": "^0.0.2-security",
-    "express": "^4.19.2",
     "nodemon": "^3.1.4"
   }
 }
