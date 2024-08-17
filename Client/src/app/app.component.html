@@ -1,16 +1,11 @@
-@for (reactorType of reactors; track reactorType) {
-  <app-reactor [reactorType]="reactorType"></app-reactor>
-}
+<h1>Reactoren</h1>
+<nav>
+  <ul>
+    <li><a routerLink="/reactoren">reactoren</a></li>
+    <li><a routerLink="/over">over</a></li>
+  </ul>
+</nav>
 
-<section>
-  <label for="newReactor">Nieuwe reactor</label>
-  <button (click)="addNewReactor()">Toevoegen</button>
-</section>
+<router-outlet></router-outlet>
 
 
-<!-- <section>
-<p>Temperatuur Unit: {{locale}}  </p>
-        <button (click)="changeLocale('°C')">Celsius</button>
-        <button (click)="changeLocale('°F')">Fahrenheit</button>
-        <button (click)="changeLocale('°K')">Kelvin</button>
-</section> -->

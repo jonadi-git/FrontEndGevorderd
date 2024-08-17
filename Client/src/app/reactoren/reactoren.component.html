@@ -1,0 +1,15 @@
+@for (reactorType of reactors; track reactorType) {
+    <app-reactor [reactorType]="reactorType"></app-reactor>
+  }
+
+
+
+  
+  <section class=" reactor-section">
+    <label for="newReactor">Nieuwe reactor</label>
+    <input type="text" id="newReactor" name="newReactor" [(ngModel)]="newReactor"/>
+    <button (click)="addNewReactor()" class="reactor-button">Toevoegen</button>
+
+    
+  </section>
+  
